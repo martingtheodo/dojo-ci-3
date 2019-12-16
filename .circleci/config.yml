@@ -5,4 +5,4 @@ jobs:
       - image: circleci/node:12-stretch
     steps:
       # 😱 An API key in plain text in the URL! 😱
-      - run: curl "https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=118f0df9ccf4c53a2fc06246ce0d81a3"
+      - run: curl "https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=${APPID}"
