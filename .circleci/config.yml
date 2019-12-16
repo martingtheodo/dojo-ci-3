@@ -1,0 +1,20 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.8.0-buster
+    steps:
+      - checkout
+      - run:
+          name: Install R
+          command: |
+            sudo apt install dirmngr --install-recommends
+            sudo apt install software-properties-common
+            sudo apt install apt-transport-https
+            sudo apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
+            sudo add-apt-repository 'deb http://cloud.r-project.org/bin/linux/debian buster-cran35/'
+            sudo apt update
+            sudo apt install r-base
+      - run:
+          name: Check R version
+          command: R --version
